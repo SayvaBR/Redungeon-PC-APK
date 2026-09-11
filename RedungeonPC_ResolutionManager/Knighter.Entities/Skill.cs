@@ -1,0 +1,38 @@
+namespace Knighter.Entities;
+
+public enum Skill
+{
+	Shield,
+	Thrust,
+	Portals,
+	SloMo,
+	Flowers,
+	ResistDarkness,
+	Pogo,
+	ScareCreatures,
+	Bridger,
+	CoinMagnetRadius,
+	Telekinesis,
+	Drone,
+	Drones,
+	BreakTraps,
+	BatFriend,
+	TurnIntoBat,
+	Flight,
+	Undead,
+	SpareSkull,
+	Electronic,
+	PanicLaser,
+	Petrification,
+	SerpentsDexterity,
+	TreasureHunt,
+	Parrot,
+	Gunshot,
+	Fireproof,
+	FireShield,
+	BetterFireShield,
+	Blaze,
+	WolfBite,
+	FullMoon,
+	WolfReinforcement
+}

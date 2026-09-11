@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+
+    <TargetFramework>net9.0</TargetFramework>
+
+    <RollForward>Major</RollForward>
+
+    <PublishReadyToRun>false</PublishReadyToRun>
+    <TieredCompilation>false</TieredCompilation>
+    <!-- Build only the explicit PC manifest, never Android.mgcb as PC content. -->
+    <EnableMGCBItems>false</EnableMGCBItems>
+
+    <!-- Facilita o diagnóstico -->
+    <MonoGameMGCBAdditionalArguments></MonoGameMGCBAdditionalArguments>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Icon.ico"/>
+    <None Remove="Icon.bmp"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Icon.ico"/>
+    <EmbeddedResource Include="Icon.bmp"/>
+  </ItemGroup>
+
+  <!-- Os contratos executáveis vivem em um projeto separado e não fazem
+       parte do binário do jogo. -->
+  <ItemGroup>
+    <Compile Remove="Tests\**\*.cs"/>
+    <Compile Remove="Android\**\*.cs"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Fixar as versões -->
+    <PackageReference Include="MonoGame.Framework.DesktopGL"
+                      Version="3.8.4.1"/>
+
+    <PackageReference Include="MonoGame.Content.Builder.Task"
+                      Version="3.8.4.1"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Content\**\*.*"
+             Exclude="Content\bin\**;Content\obj\**;Content\**\*.mgcb;Content\Music\*.mp3;Content\Shaders\Compiled\*.mgfxo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <MonoGameContentReference Include="Content\Content.mgcb"/>
+  </ItemGroup>
+
+</Project>

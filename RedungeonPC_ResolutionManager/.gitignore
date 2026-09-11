@@ -1,0 +1,34 @@
+# Visual Studio / Rider
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# .NET e MonoGame gerados
+bin/
+obj/
+Content/bin/
+Content/obj/
+TestResults/
+artifacts/
+publish/
+
+# Diagnóstico local
+*.log
+build_log.txt
+crash_log.txt
+screenshots/
+/run_stdout.txt
+/run_stderr.txt
+/docs/ui-audit/play-*.png
+/docs/ui-audit/runtime-*.png
+
+# Arquivo acidental criado por comandos locais
+/dotnet
+
+# Sistema operacional
+Thumbs.db
+Desktop.ini
+.DS_Store

@@ -1,0 +1,37 @@
+## .NET / Visual Studio
+bin/
+obj/
+.vs/
+*.user
+*.suo
+
+# Backup local do repositório antigo, nunca publicar.
+**/.git-original-backup/
+
+## Projetos de teste locais
+/TestProjects/
+
+# Builds e artefatos locais: regenerados pelos scripts de entrega.
+**/bin/
+**/obj/
+**/.vs/
+**/artifacts/
+**/TestResults/
+**/coverage/
+**/publish/
+# A distribuição atual do PC e o APK são entregáveis versionados.
+JOGO REDUNGEON/PC/*
+!JOGO REDUNGEON/PC/
+!JOGO REDUNGEON/PC/**
+JOGO REDUNGEON/Android/*
+!JOGO REDUNGEON/Android/
+!JOGO REDUNGEON/Android/Redungeon.apk
+
+# Pacotes grandes e saves locais.
+*.zip
+*.apk
+*.aab
+*.dat
+*.log
+*.user
+*.suo
