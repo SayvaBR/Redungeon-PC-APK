@@ -32,7 +32,7 @@ public sealed partial class Core : Component
 
 	public GraphicsDevice GraphicsDevice;
 
-	public Game1 Game;
+	public MobileGame Game;
 
 	public FrameCounter FrameCounter;
 
@@ -156,7 +156,7 @@ public sealed partial class Core : Component
 
 	public Holiday Holiday { get; private set; }
 
-	private Core(Game1 game, GraphicsDevice graphicsDevice, SpriteBatch spriteBatch, ContentManager content, int bufferWidth, int bufferHeight)
+	private Core(MobileGame game, GraphicsDevice graphicsDevice, SpriteBatch spriteBatch, ContentManager content, int bufferWidth, int bufferHeight)
 	{
 		InitDebugTools();
 		GraphicsDevice = graphicsDevice;
@@ -202,7 +202,7 @@ public sealed partial class Core : Component
 		DebugMessage($"screen size: {bufferWidth}x{bufferHeight}");
 	}
 
-	public static void Initialize(Game1 game, GraphicsDevice graphicsDevice, SpriteBatch spriteBatch, ContentManager content, int bufferWidth, int bufferHeight)
+	public static void Initialize(MobileGame game, GraphicsDevice graphicsDevice, SpriteBatch spriteBatch, ContentManager content, int bufferWidth, int bufferHeight)
 	{
 		if (!initalized)
 		{

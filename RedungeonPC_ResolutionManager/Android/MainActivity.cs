@@ -5,17 +5,18 @@ using Android.Views;
 using Microsoft.Xna.Framework;
 using System.IO;
 
+#pragma warning disable CA1422
 [Activity(Label = "Redungeon", MainLauncher = true, Exported = true,
     Theme = "@android:style/Theme.NoTitleBar.Fullscreen",
     ScreenOrientation = ScreenOrientation.Sensor,
     ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden | ConfigChanges.ScreenSize)]
 public sealed class MainActivity : AndroidGameActivity
 {
-    private Knighter.Game1 game;
+    private Knighter.MobileGame game;
     protected override void OnCreate(Bundle state)
     {
         base.OnCreate(state);
-        var vibrator = (Vibrator)GetSystemService(Android.Content.Context.VibratorService);
+        var vibrator = (Vibrator)GetSystemService(VibratorService);
         Knighter.Gameplay.Rumble.PhonePulse = (strength, milliseconds) =>
         {
             if (vibrator?.HasVibrator != true) return;
@@ -27,8 +28,8 @@ public sealed class MainActivity : AndroidGameActivity
         HideSystemBars();
         Directory.SetCurrentDirectory(FilesDir.AbsolutePath);
         CopyAssets("Content");
-        game = new Knighter.Game1();
-        SetContentView((Android.Views.View)game.Services.GetService(typeof(Android.Views.View)));
+        game = new Knighter.MobileGame();
+        SetContentView((View)game.Services.GetService(typeof(View)));
         game.Run();
     }
     private void CopyAssets(string path)
