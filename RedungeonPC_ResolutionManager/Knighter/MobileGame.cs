@@ -15,7 +15,7 @@ public enum WindowMode
 	Borderless
 }
 
-public sealed class Game1 : Game
+public sealed class MobileGame : Game
 {
 	private const int DefaultWindowedWidth = 1280;
 
@@ -49,7 +49,7 @@ public sealed class Game1 : Game
 	private string VisualCapturePath => QaSession.IsActive ? System.Environment.GetEnvironmentVariable("REDUNGEON_QA_VISUAL") : null;
 #endif
 
-	public Game1()
+	public MobileGame()
 	{
 		graphics = new GraphicsDeviceManager(this);
 		base.Content.RootDirectory = "Content";

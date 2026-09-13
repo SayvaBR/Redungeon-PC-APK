@@ -12,6 +12,11 @@
     <!-- Build only the explicit PC manifest, never Android.mgcb as PC content. -->
     <EnableMGCBItems>false</EnableMGCBItems>
 
+    <!--  -->
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+
     <!-- Facilita o diagnóstico -->
     <MonoGameMGCBAdditionalArguments></MonoGameMGCBAdditionalArguments>
   </PropertyGroup>
@@ -46,6 +51,23 @@
     <PackageReference Include="MonoGame.Content.Builder.Task"
                       Version="3.8.5.1"/>
   </ItemGroup>
+
+  <!-- TODO: fix extract process for SDL2 library-->
+  <Target Name="ExtractSDL2ToRoot" AfterTargets="ComputeFilesToPublish">
+    <ItemGroup>
+      <!-- 1. Исключаем все варианты SDL2 из внутриисполняемого SingleFile -->
+      <ResolvedFileToPublish Update="@(ResolvedFileToPublish)"
+                             Condition="$([System.String]::Copy('%(ResolvedFileToPublish.Filename)').Contains('SDL2'))">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+
+      <!-- 2. Берем SDL2 строго из папки runtimes и копируем прямо в корень рядом с .exe -->
+      <ResolvedFileToPublish Update="@(ResolvedFileToPublish)"
+                             Condition="$([System.String]::Copy('%(ResolvedFileToPublish.Filename)').Contains('SDL2'))">
+        <RelativePath>%(ResolvedFileToPublish.Filename)%(ResolvedFileToPublish.Extension)</RelativePath>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
 
   <ItemGroup>
     <Content Include="Content\**\*.*"

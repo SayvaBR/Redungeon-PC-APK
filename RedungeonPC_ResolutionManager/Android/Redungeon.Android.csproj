@@ -24,7 +24,7 @@
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.5.1" />
     <Compile Include="*.cs" />
     <AndroidResource Include="Resources/drawable/icon_knight.png" />
-    <Compile Include="../Knighter*/**/*.cs" Exclude="../Knighter/Game1.cs;../Knighter/MouseTouchAdapter.cs" />
+    <Compile Include="../Knighter*/**/*.cs" Exclude="../Knighter/MobileGame.cs;../Knighter/MouseTouchAdapter.cs" />
     <AndroidAsset Include="../Content/**/*.*" Exclude="../Content/bin/**;../Content/obj/**;../Content/**/*.mgcb;../Content/Shaders/**;../Content/Music/*.xnb;../Content/Music/*.ogg" Link="Content/%(RecursiveDir)%(Filename)%(Extension)" />
     <MonoGameContentReference Include="../Content/Android.mgcb" />
   </ItemGroup>

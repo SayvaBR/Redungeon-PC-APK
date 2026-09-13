@@ -19,7 +19,7 @@ try
 #if DEBUG
     QaSession.Configure(args, launchDirectory);
 #endif
-    using var game = new Knighter.Game1();
+    using var game = new Knighter.MobileGame();
     game.Run();
 }
 catch (Exception ex)
