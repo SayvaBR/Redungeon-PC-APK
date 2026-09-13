@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input.Touch;
 
 namespace Knighter;
 public enum WindowMode { Windowed, Fullscreen, Borderless }
-public sealed class Game1 : Game
+public sealed class MobileGame : Game
 {
     private readonly GraphicsDeviceManager graphics;
     private SpriteBatch batch;
@@ -16,7 +16,7 @@ public sealed class Game1 : Game
     private int pendingHeight;
     private int pendingStableFrames;
     private bool waitingForStableSurface;
-    public Game1()
+    public MobileGame()
     {
         Settings.IsTouchDevice = true;
         // The PC reference layout is intentionally compact. On a phone the

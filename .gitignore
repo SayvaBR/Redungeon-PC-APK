@@ -35,3 +35,6 @@ JOGO REDUNGEON/Android/*
 *.log
 *.user
 *.suo
+
+# etc
+raw/

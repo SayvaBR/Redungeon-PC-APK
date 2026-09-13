@@ -107,12 +107,36 @@ public sealed class WolfChar : PlayerEntity
             playState.Hud.ShowAlert(__(SId.SKILL_REINFORCEMENT_name), __(SId.LYKOS_boost_ready), Color.Gold, 90, SpriteName.lykos_reinforce);
     }
 
+    private bool IsTrap(InjuryType injuryType)
+    {
+        switch (injuryType)
+        {
+            case InjuryType.Spikes:
+                return true;
+            case InjuryType.Saw:
+                return true;
+            case InjuryType.Crushed:
+                return true;
+            case InjuryType.Bolt:
+                return true;
+            case InjuryType.Axe:
+                return true;
+            case InjuryType.Sword:
+                return true;
+            case InjuryType.Flame:
+                return true;
+            case InjuryType.Zap:
+                return true;
+            default:
+                return false;
+        }
+    }
     public override bool TryResist(InjuryType injuryType, Entity offender = null)
     {
         if (injuryType == InjuryType.Follower && offender is FollowerEntity follower) { EatSkeleton(follower); return follower.IsBroken; }
         if (injuryType == InjuryType.Serpent && offender is SerpentEntity serpent && !serpent.IsChineseDragon) { EatSerpent(serpent); return serpent.Head().IsBroken; }
         // Only physical traps are neutralized. Enemies, spells and darkness remain dangerous.
-        return WolfForm && injuryType is InjuryType.Spikes or InjuryType.Saw or InjuryType.Crushed or InjuryType.Bolt or InjuryType.Axe or InjuryType.Flame or InjuryType.Zap;
+        return WolfForm && IsTrap(injuryType);
     }
 
     public override bool TryResistSpell(SpellType spellType, Entity offender = null) => false;
