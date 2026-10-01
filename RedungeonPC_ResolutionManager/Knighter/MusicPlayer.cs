@@ -25,8 +25,11 @@ public class MusicPlayer
 	{
 		wait = new AutoResetEvent(initialState: true);
 		running = true;
-		thread = new Thread(MusicThread);
-		thread.Name = "Music Thread";
+		thread = new Thread(MusicThread)
+		{
+			Name = "Music Thread",
+			IsBackground = true
+		};
 		thread.Start();
 	}
 

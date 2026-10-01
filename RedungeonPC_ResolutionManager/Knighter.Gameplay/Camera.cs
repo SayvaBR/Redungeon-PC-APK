@@ -30,7 +30,19 @@ public class Camera : Component
 
 	public Vector2 Position => ((platform == null) ? Vector2.Zero : platform.WorldPosition) + position + Offset;
 
-	public float Zoom => ZoomBox.Value / Settings.GuiScale;
+	public float Zoom 
+	{ 
+		get 
+		{ 
+			float zoom = ZoomBox.Value / Settings.GuiScale;
+			
+			#if ANDROID
+			return zoom * 2.15f;
+			#else
+			return zoom;
+			#endif
+		}
+	}
 
 	public Camera()
 	{

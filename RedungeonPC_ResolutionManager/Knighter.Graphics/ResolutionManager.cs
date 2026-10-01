@@ -71,7 +71,8 @@ public sealed class ResolutionManager
 		BackbufferWidth = Math.Max(1, backbufferWidth);
 		BackbufferHeight = Math.Max(1, backbufferHeight);
 
-		float targetLogicalHeight = ReferenceLogicalHeight / Settings.GuiScale;
+		float mobileZoom = Settings.IsTouchDevice ? 1.6f : 1.0f;
+    	float targetLogicalHeight = (ReferenceLogicalHeight / Settings.GuiScale) / mobileZoom;
 
 		int scale = Math.Max(1, (int)((float)BackbufferHeight / targetLogicalHeight));
 		float logicalWidth = BackbufferWidth / (float)scale;

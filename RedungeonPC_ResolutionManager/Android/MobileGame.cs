@@ -21,7 +21,7 @@ public sealed class MobileGame : Game
         Settings.IsTouchDevice = true;
         // The PC reference layout is intentionally compact. On a phone the
         // same pixel-art units would occupy too little of the display.
-        Settings.GuiScale = 1.15f;
+        Settings.GuiScale = 0.95f;
         graphics = new GraphicsDeviceManager(this) { IsFullScreen = true,
             SupportedOrientations = DisplayOrientation.Portrait |
                 DisplayOrientation.LandscapeLeft |

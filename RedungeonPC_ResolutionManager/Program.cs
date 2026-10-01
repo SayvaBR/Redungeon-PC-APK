@@ -13,27 +13,51 @@ Environment.SetEnvironmentVariable("SDL_JOYSTICK_HIDAPI_PS4_RUMBLE", "1");
 Environment.SetEnvironmentVariable("SDL_JOYSTICK_HIDAPI_PS5_RUMBLE", "1");
 Directory.SetCurrentDirectory(AppContext.BaseDirectory);
 
+AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
+{
+	try
+	{
+		string logPath = Path.Combine(AppContext.BaseDirectory, "crash_log.txt");
+		File.WriteAllText(logPath, e.ExceptionObject?.ToString() ?? "Unknown unhandled crash");
+		Knighter.Gameplay.Rumble.Stop();
+	}
+	catch { }
+	Environment.Exit(1);
+};
+
 Exception failure = null;
 try
 {
 #if DEBUG
-    QaSession.Configure(args, launchDirectory);
+	QaSession.Configure(args, launchDirectory);
 #endif
-    using var game = new Knighter.MobileGame();
-    game.Run();
+	using var game = new Knighter.MobileGame();
+	game.Run();
 }
 catch (Exception ex)
 {
-    failure = ex;
-    string logPath = Path.Combine(AppContext.BaseDirectory, "crash_log.txt");
-    File.WriteAllText(logPath, ex.ToString());
-    Console.WriteLine("ERRO CAPTURADO - veja crash_log.txt:");
-    Console.WriteLine(ex);
-    Environment.ExitCode = 1;
+	failure = ex;
+	try
+	{
+		string logPath = Path.Combine(AppContext.BaseDirectory, "crash_log.txt");
+		File.WriteAllText(logPath, ex.ToString());
+	}
+	catch { }
+	Console.WriteLine("ERRO CAPTURADO - veja crash_log.txt:");
+	Console.WriteLine(ex);
+	try
+	{
+		Knighter.Gameplay.Rumble.Stop();
+	}
+	catch { }
 }
 finally
 {
 #if DEBUG
-    QaSession.Shutdown(failure);
+	QaSession.Shutdown(failure);
 #endif
+	if (failure != null)
+	{
+		Environment.Exit(1);
+	}
 }

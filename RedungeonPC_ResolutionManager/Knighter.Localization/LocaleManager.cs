@@ -69,7 +69,6 @@ public class LocaleManager : Component
 
 	public string GetForCurrentLocale(string id)
 	{
-		string text = "";
 		if (Locales[CurrentLocale].Exists(id))
 		{
 			return Locales[CurrentLocale].Get(id);

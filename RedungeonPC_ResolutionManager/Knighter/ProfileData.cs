@@ -227,11 +227,16 @@ public class ProfileData : Component
 		}
 		// Esta edição é uma versão completa: todo o elenco fica disponível no
 		// nível máximo sem alterar moedas, estatísticas ou personagem selecionado.
+		// =========================================
+		// UPD. Now it'll works only on debug build
+		#if DEBUG
 		foreach (Character value in Enum.GetValues(typeof(Character)))
 		{
 			Characters[value].Unlocked = true;
 			Characters[value].Level = CharDescription.Get[value].Levels.Count;
 		}
+		#endif
+
 		foreach (Achievement value2 in Enum.GetValues(typeof(Achievement)))
 		{
 			bool result4 = false;

@@ -31,11 +31,12 @@ public class SignRecognizer : Component
 		{
 			text = streamReader.ReadToEnd();
 		}
-		string[] array = text.Split(new char[1] { '\n' });
+
+		string[] array = text.Split('\n');
 		int num = -1;
 		for (int i = 0; i < array.Length; i++)
 		{
-			if (array[i] == "===")
+			if (array[i].TrimEnd() == "===")
 			{
 				num = i;
 				break;
@@ -44,9 +45,9 @@ public class SignRecognizer : Component
 		int num2 = num + 1;
 		for (int j = 0; j < num; j += 2)
 		{
-			string[] array2 = array[j].ToLower().Split(new char[1] { ':' });
+			string[] array2 = array[j].TrimEnd().ToLower().Split(':');
 			string key = array2[0];
-			int num3 = int.Parse(array[j + 1]);
+			int num3 = int.Parse(array[j + 1].TrimEnd());
 			SignMetas.Add(key, new SignMeta
 			{
 				Complexity = int.Parse(array2[1])
@@ -54,7 +55,7 @@ public class SignRecognizer : Component
 			data[key] = new List<string>();
 			for (int k = 0; k < num3; k++)
 			{
-				data[key].Add(array[num2 + k]);
+				data[key].Add(array[num2 + k].TrimEnd());
 			}
 			num2 += num3;
 		}

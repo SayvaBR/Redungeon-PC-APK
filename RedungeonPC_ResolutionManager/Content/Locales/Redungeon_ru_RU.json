@@ -452,23 +452,23 @@
 			"swipe": "Swipe",
 			"dpad": "D-Pad",
 			"compact_dpad": "Compact D-Pad",
-			"achievements": "Achievements",
-			"progress": "Progress",
-			"reset_progress": "Reset progress",
+			"achievements": "Достижения",
+			"progress": "Прогресс",
+			"reset_progress": "Сбросить прогресс",
 			"reset_warning": "Reset your progress? All game data (coins, characters, records and achievements) will be erased. Settings will be kept.",
-			"pause_exit": "Exit",
-			"pause_resume": "Resume",
-			"mode_soon": "NEW MODE — COMING SOON",
-			"ui_size": "Interface size",
+			"pause_exit": "Покинуть",
+			"pause_resume": "Возобновить",
+			"mode_soon": "НОВЫЙ РЕЖИМ — СКОРО",
+			"ui_size": "Размер интерфейса",
 			"ui_size_desc": "Adjusts menus and text, not the game camera",
-			"ui_small": "Small",
-			"ui_medium": "Medium",
-			"ui_large": "Large",
+			"ui_small": "Маленький",
+			"ui_medium": "Средний",
+			"ui_large": "Большой",
 			"disabled": "Выкл.",
 			"dynamic_lighting": "Динамический свет",
 			"dynamic_lighting_desc": "Мягкое освещение поверхностей",
-			"music_volume": "Music volume",
-			"effects_volume": "Sound effects volume",
+			"music_volume": "Громкость музыки",
+			"effects_volume": "Громкость звуковых эффектов",
 			"volume_desc": "Left / right to adjust",
 			"window_mode": "Display mode",
 			"window_desc": "Applied with the Apply button",
@@ -492,6 +492,34 @@
 			"pause": "Пауза",
 			"continue": "Продолжить",
 			"skip": "Пропустить"
+		},
+		"CHAR_LYKOS": {
+			"name": "Ликос",
+			"bio": "A quiet woodcutter with a ravenous secret. Even his human jaws can crush skeletons.",
+			"l2": "Full moon: transform for 3 seconds. Resist contact traps; pits and webs remain dangerous. Recharge: 20 seconds.",
+			"l3": "Stay a wolf for 5 seconds. The dungeon slows around you. Recharge: 15 seconds.",
+			"l4": "Eat 5 skeletons to add 2 seconds to your next transformation."
+		},
+		"SKILL_WOLFBITE": {
+			"name": "Мощный укус",
+			"desc": "Скелеты вам ни по чём! Своими сильными челюстями вы запросто перегрызёте все кости у себя на пути."
+		},
+		"SKILL_FULLMOON": {
+			"name": "Полнолуние",
+			"desc": "Вы можете на время принимать волчью форму, в которой вы неуязвимы для всех ловушек."
+		},
+		"SKILL_REINFORCEMENT": {
+			"name": "Подкрепление",
+			"desc": "Ешьте кости, и это сделает вашего волка ещё сильнее. При съедании 5 костей, следующее превращение продержится ещё дольше."
+		},
+		"LYKOS": {
+			"bone": "+1 кость",
+			"boost_ready": "+2 seconds next moon!"
+		},
+		"ACHIEVEMENT_RAVENOUS": {
+			"name": "Волчий аппетит!",
+			"brief": "Съешьте 50 костей с Ликосом.",
+			"debrief": "50 приёмов. Всё ещё голоден."
 		},
 		"TITLE": {
 			"tap_to_start": "НАЧАТЬ ИГРУ!"
